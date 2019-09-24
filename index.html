@@ -65,12 +65,12 @@ map.on('load', function () {
             if (i < coordinates.length) {
                 data.features[0].geometry.coordinates.push(coordinates[i]);
                 map.getSource('trace').setData(data);
-                map.panTo(coordinates[i], 1000);
+                map.panTo(coordinates[i], 3000);
                 i++;
             } else {
                 window.clearInterval(timer);
             }
-        }, 500);
+        }, 600);
     });
 });
 </script>
