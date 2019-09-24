@@ -29,9 +29,12 @@ map.on('load', function () {
     // We use D3 to fetch the JSON here so that we can parse and use it separately
     // from GL JS's use in the added source. You can use any request method (library
     // or otherwise) that you want.
-    https://docs.mapbox.com/mapbox-gl-js/assets/hike.geojson
-    d3.json('/Users/garrettmillar/Desktop/Harvard_Nurses_Health/Peter_latLongs_GeoJSON.geojson', function(err, data) {
-        if (err) throw err;
+    // https://docs.mapbox.com/mapbox-gl-js/assets/hike.geojson
+    // d3.json('https://raw.githubusercontent.com/gcmillar/Harvard-Med-NHS/master/data/Peter_latLongs_GeoJSON', function(err, data) {
+    //     if (err) throw err;
+    d3.json('https://raw.githubusercontent.com/gcmillar/Harvard-Med-NHS/master/data/Peter_latLongs.geojson', function(err, data) {
+        console.log(data[0]);
+        if (err) throw err;    
 
         // save full coordinate list for later
         var coordinates = data.features[0].geometry.coordinates;
