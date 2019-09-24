@@ -32,7 +32,7 @@ map.on('load', function () {
     // https://docs.mapbox.com/mapbox-gl-js/assets/hike.geojson
     // d3.json('https://raw.githubusercontent.com/gcmillar/Harvard-Med-NHS/master/data/Peter_latLongs_GeoJSON', function(err, data) {
     //     if (err) throw err;
-    d3.json('https://raw.githubusercontent.com/gcmillar/Harvard-Med-NHS/master/data/Peter_latLongs.geojson', function(err, data) {
+    d3.json('https://raw.githubusercontent.com/gcmillar/Harvard-Med-NHS/master/data/Peter_lines.geojson', function(err, data) {
         console.log(data[0]);
         if (err) throw err;    
 
@@ -50,14 +50,14 @@ map.on('load', function () {
             "source": "trace",
             "paint": {
                 "line-color": "yellow",
-                "line-opacity": 0.75,
-                "line-width": 5
+                "line-opacity": 0.55,
+                "line-width": 3
             }
         });
 
         // setup the viewport
-        map.jumpTo({ 'center': coordinates[0], 'zoom': 14 });
-        map.setPitch(30);
+        map.jumpTo({ 'center': coordinates[0], 'zoom': 15 });
+        map.setPitch(60);
 
         // on a regular basis, add more coordinates from the saved list and update the map
         var i = 0;
@@ -65,12 +65,12 @@ map.on('load', function () {
             if (i < coordinates.length) {
                 data.features[0].geometry.coordinates.push(coordinates[i]);
                 map.getSource('trace').setData(data);
-                map.panTo(coordinates[i]);
+                map.panTo(coordinates[i], 1000);
                 i++;
             } else {
                 window.clearInterval(timer);
             }
-        }, 10);
+        }, 500);
     });
 });
 </script>
